@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import styles from './modal.module.css'
 
 interface ProjectProps {
@@ -17,12 +18,25 @@ interface Props {
   handleselectedIndex: (direction: 'next' | 'prev') => void
 }
 const ProjectModal = ({ closeModal, project, handleselectedIndex }: Props) => {
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    setIsVisible(true)
+  }, [])
+
+  const handleClose = () => {
+    setIsVisible(false)
+    setTimeout(() => {
+      closeModal()
+    }, 300)
+  }
+
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${isVisible ? styles.open : ''}`}>
       {/* 상단창 */}
       <div className={styles.tap}>
         <div className={styles.tap_circle}>
-          <span onClick={closeModal} />
+          <span onClick={handleClose} />
           <span />
           <span />
         </div>

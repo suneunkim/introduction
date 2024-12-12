@@ -2,15 +2,30 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 740px;
   height: 740px;
   z-index: 20;
   border-radius: 10px;
   overflow: auto;
 
+  /* 창 열고 닫는 효과 */
+  opacity: 0;
+  transform: scale(0.1) translate(-50%, -50%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform-origin: left;
+
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(50px); /* 블러 강도 설정 */
+}
+
+.container.open {
+  opacity: 1;
+  transform: scale(1) translate(-50%, -50%);
+}
+
+.container.switch {
+  opacity: 1;
+  transform: scale(1) translate(-50%, -50%);
 }
 
 .container_inner_wrap {

@@ -43,7 +43,7 @@ function App() {
       <Footer />
       {isModalOpen && (
         <ProjectModal
-          key={selectedProject?.title}
+          key='project-modal'
           project={selectedProject}
           closeModal={closeModal}
           handleselectedIndex={handleselectedIndex}
